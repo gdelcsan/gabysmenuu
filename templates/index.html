@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}{% block content %}
+<h2>{{ 'For you' if not g.es else 'Para ti' }}</h2>
+<form action="{{ url_for('search') }}" method="get" style="margin:10px 0 18px">
+  <div class="form-row">
+    <input type="text" name="q" placeholder="{{ 'Search recipes' if not g.es else 'Buscar recetas' }}">
+    <select name="tag"><option>Any</option>{% for t in all_tags %}<option value="{{ t }}">{{ t }}</option>{% endfor %}</select>
+  </div>
+</form>
+<div class="grid">
+{% for r in recipes %}
+  <div class="card">
+    <h3><a href="{{ url_for('recipe_detail', rid=r.id) }}">{{ r.title_es if g.es else r.title_en }}</a></h3>
+    <div style="opacity:.8">{{ r.level }} • {{ r.time_minutes }} min • {{ r.servings }} {{ 'serv' if not g.es else 'porc' }}</div>
+    <div style="margin:8px 0">{% for t in r.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+    <a class="btn" href="{{ url_for('recipe_detail', rid=r.id) }}">{{ 'Open' if not g.es else 'Abrir' }}</a>
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

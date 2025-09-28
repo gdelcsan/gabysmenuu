@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}{% block content %}
+<h2>➕ {{ 'Add Recipe' if not g.es else 'Agregar Receta' }}</h2>
+<form method="post">
+  <div class="form-row">
+    <label>ID</label><input name="id" placeholder="lowercase-with-dashes" required>
+    <label>{{ 'Level' if not g.es else 'Nivel' }}</label>
+    <select name="level"><option>Basic</option><option>Intermediate</option><option>Advanced</option></select>
+  </div>
+  <div class="form-row">
+    <label>Title (EN)</label><input name="title_en" required>
+    <label>Título (ES)</label><input name="title_es">
+  </div>
+  <div class="form-row">
+    <label>Time (min)</label><input type="number" name="time_minutes" value="30" min="1">
+    <label>Servings</label><input type="number" name="servings" value="2" min="1">
+  </div>
+  <label>Tags (comma separated)</label><input name="tags">
+  <label>Ingredients (EN, one per line)</label><textarea name="ingredients_en" rows="5"></textarea>
+  <label>Ingredientes (ES, uno por línea)</label><textarea name="ingredients_es" rows="5"></textarea>
+  <label>Steps (EN, one per line)</label><textarea name="steps_en" rows="5"></textarea>
+  <label>Pasos (ES, uno por línea)</label><textarea name="steps_es" rows="5"></textarea>
+  <div style="margin-top:10px"><button class="btn" type="submit">{{ 'Add' if not g.es else 'Añadir' }}</button></div>
+</form>
+<hr>
+<h3>{{ 'Export updated recipes.json' if not g.es else 'Exportar recipes.json actualizado' }}</h3>
+<form method="post" action="{{ url_for('export_data') }}"><button class="btn secondary" type="submit">{{ 'Download' if not g.es else 'Descargar' }}</button></form>
+{% endblock %}

@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}{% block content %}
+<h2>🔎 {{ 'Search recipes' if not g.es else 'Buscar recetas' }}</h2>
+<form method="get">
+  <div class="form-row">
+    <input type="text" name="q" value="{{ q or '' }}" placeholder="{{ 'Search recipes' if not g.es else 'Buscar recetas' }}">
+    <select name="tag"><option {{ 'selected' if tag=='Any' }}>Any</option>{% for t in all_tags %}<option value="{{ t }}" {{ 'selected' if tag==t else '' }}>{{ t }}</option>{% endfor %}</select>
+  </div>
+  <label>{{ 'Max time (min)' if not g.es else 'Tiempo máx (min)' }}</label>
+  <input type="number" name="max_time" min="5" value="{{ max_time or 60 }}">
+  <div style="margin-top:10px"><button class="btn" type="submit">{{ 'Search' if not g.es else 'Buscar' }}</button></div>
+</form>
+{% if results is not none %}
+  {% if results|length == 0 %}
+    <div class="alert">{{ 'No recipes found.' if not g.es else 'Sin resultados.' }}</div>
+  {% else %}
+    <div class="grid" style="margin-top:14px">
+      {% for r in results %}
+      <div class="card">
+        <h3><a href="{{ url_for('recipe_detail', rid=r.id) }}">{{ r.title_es if g.es else r.title_en }}</a></h3>
+        <div style="opacity:.8">{{ r.level }} • {{ r.time_minutes }} min • {{ r.servings }} {{ 'serv' if not g.es else 'porc' }}</div>
+        <div style="margin:8px 0">{% for t in r.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+        <a class="btn" href="{{ url_for('recipe_detail', rid=r.id) }}">{{ 'Open' if not g.es else 'Abrir' }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gaby's Menu</title>
+<link rel="icon" href="{{ url_for('static', filename='logo.png') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+<header class="header">
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Gaby's Menu">
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('search') }}">Search</a>
+    <a href="{{ url_for('favorites') }}">Favorites</a>
+    <a href="{{ url_for('add_recipe') }}">Add Recipe</a>
+  </nav>
+  <div style="margin-left:auto">
+    <form method="post" action="{{ url_for('toggle_lang') }}">
+      <input type="hidden" name="next" value="{{ request.path }}">
+      <button class="btn secondary" type="submit">{{ 'ES' if g.es else 'EN' }}</button>
+    </form>
+  </div>
+</header>
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}{% for m in messages %}<div class="alert">{{ m }}</div>{% endfor %}{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+  <div class="footer">© 2025 Gaby's Menu</div>
+</div>
+</body></html>

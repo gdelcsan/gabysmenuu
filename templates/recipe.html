@@ -1,0 +1,26 @@
+
+{% extends "base.html" %}{% block content %}
+<h2>{{ r.title_es if g.es else r.title_en }}</h2>
+<div style="opacity:.8">{{ r.level }} • {{ r.time_minutes }} min • {{ r.servings }} {{ 'Servings' if not g.es else 'Porciones' }}</div>
+<div style="margin:10px 0 18px">{% for t in r.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+<div class="grid" style="grid-template-columns:2fr 1fr">
+  <div>
+    <h3>{{ 'Ingredients' if not g.es else 'Ingredientes' }}</h3>
+    <ul>{% for i in (r.ingredients_es if g.es else r.ingredients_en) %}<li>{{ i }}</li>{% endfor %}</ul>
+    <h3>{{ 'Steps' if not g.es else 'Pasos' }}</h3>
+    <ol>{% for s in (r.steps_es if g.es else r.steps_en) %}<li>{{ s }}</li>{% endfor %}</ol>
+  </div>
+  <div>
+    <form method="post" action="{{ url_for('toggle_favorite', rid=r.id) }}">
+      {% if is_fav %}
+        <button class="btn secondary" type="submit">{{ 'Remove Favorite' if not g.es else 'Quitar Favorito' }}</button>
+      {% else %}
+        <button class="btn" type="submit">{{ 'Add to Favorites' if not g.es else 'Añadir a Favoritos' }}</button>
+      {% endif %}
+    </form>
+    <hr>
+    <p style="color:#bdbdbd">{{ 'Share link' if not g.es else 'Compartir enlace' }}:</p>
+    <input value="{{ request.url }}" readonly>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}{% block content %}
+<h2>⭐ {{ 'Favorites' if not g.es else 'Favoritos' }}</h2>
+{% if recipes|length == 0 %}
+  <div class="alert">{{ 'No favorites yet.' if not g.es else 'Aún no tienes favoritos.' }}</div>
+{% else %}
+  <div class="grid">
+    {% for r in recipes %}
+    <div class="card">
+      <h3><a href="{{ url_for('recipe_detail', rid=r.id) }}">{{ r.title_es if g.es else r.title_en }}</a></h3>
+      <div style="opacity:.8">{{ r.level }} • {{ r.time_minutes }} min • {{ r.servings }} {{ 'serv' if not g.es else 'porc' }}</div>
+      <div style="margin:8px 0">{% for t in r.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+      <form method="post" action="{{ url_for('toggle_favorite', rid=r.id) }}"><button class="btn secondary" type="submit">{{ 'Remove Favorite' if not g.es else 'Quitar Favorito' }}</button></form>
+    </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}
