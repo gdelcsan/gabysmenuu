@@ -1,0 +1,88 @@
+[
+  {
+    "id": "heart-of-palm-plantain-moquecca",
+    "title_en": "Heart of Palm & Plantain Moqueca",
+    "title_es": "Moqueca de Palmito y Plátano",
+    "level": "Basic",
+    "time_minutes": 30,
+    "servings": 4,
+    "tags": [
+      "Dinner",
+      "Vegan",
+      "Gluten-free",
+      "Brazilian"
+    ],
+    "hero_image": "",
+    "ingredients_en": [
+      "2 tbsp olive oil",
+      "1 onion, sliced",
+      "1 bell pepper, sliced",
+      "2 cloves garlic, minced",
+      "1 can diced tomatoes",
+      "1 can heart of palm, sliced",
+      "1 ripe plantain, sliced",
+      "200 ml coconut milk",
+      "Salt & pepper"
+    ],
+    "ingredients_es": [
+      "2 cdas de aceite de oliva",
+      "1 cebolla, en rodajas",
+      "1 pimiento, en rodajas",
+      "2 dientes de ajo, picados",
+      "1 lata de tomates en cubos",
+      "1 lata de palmito, en rodajas",
+      "1 plátano maduro, en rodajas",
+      "200 ml de leche de coco",
+      "Sal y pimienta"
+    ],
+    "steps_en": [
+      "Heat oil; sauté onion, pepper and garlic 3–4 min.",
+      "Stir in tomatoes, coconut milk; simmer 5 min.",
+      "Add heart of palm and plantain; cook until tender, 10–12 min.",
+      "Season to taste and serve with rice."
+    ],
+    "steps_es": [
+      "Calienta el aceite; saltea cebolla, pimiento y ajo 3–4 min.",
+      "Agrega tomates y leche de coco; hierve a fuego lento 5 min.",
+      "Añade palmito y plátano; cocina hasta que estén tiernos, 10–12 min.",
+      "Sazona al gusto y sirve con arroz."
+    ]
+  },
+  {
+    "id": "blue-cheese-dressing",
+    "title_en": "Blue Cheese Dressing",
+    "title_es": "Aderezo de Queso Azul",
+    "level": "Basic",
+    "time_minutes": 15,
+    "servings": 8,
+    "tags": [
+      "Sauce",
+      "Vegetarian"
+    ],
+    "hero_image": "",
+    "ingredients_en": [
+      "1 cup mayonnaise",
+      "1/2 cup sour cream",
+      "1 tbsp lemon juice",
+      "120 g blue cheese, crumbled",
+      "Salt & pepper"
+    ],
+    "ingredients_es": [
+      "1 taza de mayonesa",
+      "1/2 taza de crema agria",
+      "1 cda de jugo de limón",
+      "120 g de queso azul, desmoronado",
+      "Sal y pimienta"
+    ],
+    "steps_en": [
+      "Whisk mayo, sour cream and lemon juice.",
+      "Fold in blue cheese; season to taste.",
+      "Chill before serving."
+    ],
+    "steps_es": [
+      "Bate la mayonesa, la crema agria y el jugo de limón.",
+      "Agrega el queso azul; sazona al gusto.",
+      "Refrigera antes de servir."
+    ]
+  }
+]
